@@ -1,0 +1,25 @@
+﻿@if (Visible)
+{
+    <div class="alert alert-@Type" role="alert">
+        <Text> @Description</Text>
+        <br />
+        <button @onclick="()=>OnClosed.Invoke()">Close Action</button>
+    </div>
+}
+
+@test
+@code {
+    [Parameter]
+    public string Description { get; set; }
+    [Parameter]
+    public string Type { get; set; }
+
+    [Parameter]
+    public int test { get; set; }
+
+    [Parameter]
+    public bool Visible { get; set; }
+
+    [Parameter]
+    public Action OnClosed { get; set; }
+}

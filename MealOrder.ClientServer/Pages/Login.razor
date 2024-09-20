@@ -1,0 +1,46 @@
+﻿@page "/"
+@layout EmptyLayout
+
+<br />
+Misal1
+<input type="text" @bind="@reques.Email" />
+<input type="password" @bind="@reques.Password" />
+<button @onclick="UserLogin">Login</button>
+<br />
+Misal2
+<EditForm Model="@reques" OnValidSubmit="@UserLogin">
+    <InputText @bind-Value="@reques.Email"></InputText>
+    <InputText @bind-Value="@reques.Password"></InputText>
+    <button type="submit">login</button>
+</EditForm>
+
+<br />
+
+
+@code{
+    UserLoginRequestDTO reques = new UserLoginRequestDTO();
+    [Inject]
+    public HttpClient client { get; set; }
+    [Inject]
+    public NavigationManager navigationManager { get; set; }
+    [Inject]
+    public AuthenticationStateProvider  authenticationState { get; set; }
+    [Inject]
+    public ILocalStorageService localStorageService { get; set; }
+
+
+    UserLoginResponseDTO userLoginResponseDTO = new UserLoginResponseDTO();
+    protected async Task UserLogin()
+    {
+
+        (bool IsSuccess, object Request) = await client.LoginPostServiceAsync<UserLoginRequestDTO, UserLoginResponseDTO>("http://localhost:5005/api/User/Login", reques);
+
+        if (IsSuccess)
+        {
+            var response = (Request as UserLoginResponseDTO);
+            await localStorageService.SetItemAsStringAsync("AccessToken", response.Token);
+           await (authenticationState as CuntomAuthenticationState).UserLoginAync();
+            navigationManager.NavigateTo("/index");
+        }
+    }
+}

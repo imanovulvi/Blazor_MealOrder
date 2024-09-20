@@ -1,0 +1,75 @@
+﻿@page "/userinsert"
+@page "/useredit/{UserId:int}"
+
+<EditForm @OnValidSubmit="@EditOrInsert" Model="@user">
+    <br />
+    <label for="Name">Name</label>
+    <InputText @bind-Value="user.Name" id="Name"></InputText>
+    <br />
+    <label for="Surname">Surname</label>
+    <InputText @bind-Value="user.Surname" id="Surname"></InputText>
+    <br />
+    <label for="Email">Email</label>
+    <InputText @bind-Value="user.Email" id="Email"></InputText>
+    <br />
+    <label for="Password">Password</label>
+    <InputText @bind-Value="user.Password" id="Password" type="paswword"></InputText>
+    <br />
+    <label for="IsAktiv">IsAktiv</label>
+    <InputCheckbox id="IsAktiv" @bind-Value="user.IsAktiv"></InputCheckbox>
+    <br />
+    <button type="submit" @onclick="EditOrInsert">@(UserId == 0 ? "Add" : "Edit")</button>
+    <br />
+    <button @onclick='()=>{
+navigationManager.NavigateTo("/user");
+
+}'>Cancel</button>
+</EditForm>
+
+@code {
+    [Inject]
+    public HttpClient client { get; set; }
+    [Inject]
+    public NavigationManager navigationManager { get; set; }
+    [Parameter]
+    public int UserId { get; set; }
+    UserDTO user = new UserDTO();
+    public string Message { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UserId>0)
+        {
+            var resultUser= await client.GetServiceAsync<UserDTO>($"http://localhost:5005/api/User/GetById?id={UserId}");
+            if (resultUser.Success)
+            {
+                user.Name = resultUser.Value.Name;
+                user.Surname = resultUser.Value.Surname;
+                user.Email = resultUser.Value.Email;
+                user.Password = resultUser.Value.Password;
+                user.IsAktiv = resultUser.Value.IsAktiv;
+            }
+        }
+    }
+
+    async Task EditOrInsert()
+    {
+        if (UserId == 0)
+        {
+            var result = await client.PostServiceAsync("http://localhost:5005/api/User/Create", user);
+            if (result)
+                navigationManager.NavigateTo("/user");
+            else
+                Message = "Error";
+        }
+        else
+        {
+            var result = await client.PutServiceAsync("http://localhost:5005/api/User/Update", user);
+            if (result)
+                navigationManager.NavigateTo("/user");
+            else
+                Message = "Error";
+        }
+    }
+
+}

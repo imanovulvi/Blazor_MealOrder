@@ -1,0 +1,49 @@
+﻿@page "/SupliersEditOrInsert/{id:int}"
+
+<EditForm Model="supplierDTO">
+    <br />
+    <label>Name</label>
+    <InputText placeholder="Name" @bind-Value="supplierDTO.Name"></InputText>  
+    <br />
+    <label>WebUri</label>
+    <InputText @bind-Value="supplierDTO.WebUri"></InputText>
+    <br />
+    <label>Name</label>
+   <InputCheckbox @bind-Value="supplierDTO.IsAktiv"></InputCheckbox>
+   <button @onclick="EditOrInsert">@(Id>0?"Edit":"Add")</button>
+</EditForm>
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    [Inject]
+    HttpClient client { get; set; }
+    SupplierDTO supplierDTO = new SupplierDTO();
+    [Inject]
+    NavigationManager navigationManager { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+
+        if (Id>0)
+        {
+            supplierDTO= (await client.GetServiceAsync<SupplierDTO>("http://localhost:5005/api/Supplier/GetById?id=" + Id)).Value;
+        }
+    }
+    public async void EditOrInsert()
+    {
+        if (Id>0)
+        {
+            var result=await client.PutServiceAsync<SupplierDTO>("http://localhost:5005/api/Supplier/Update", supplierDTO);
+            if (result)
+                navigationManager.NavigateTo("/Suppliers");
+        }
+        else
+        {
+            var result = await client.PostServiceAsync<SupplierDTO>("http://localhost:5005/api/Supplier/Create", supplierDTO);
+            if (result)
+                navigationManager.NavigateTo("/Suppliers");
+        }
+    }
+}

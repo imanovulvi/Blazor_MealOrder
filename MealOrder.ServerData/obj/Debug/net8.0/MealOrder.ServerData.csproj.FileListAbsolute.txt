@@ -1,0 +1,14 @@
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\bin\Debug\net8.0\MealOrder.ServerData.deps.json
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\bin\Debug\net8.0\MealOrder.ServerData.runtimeconfig.json
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\bin\Debug\net8.0\MealOrder.ServerData.dll
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\bin\Debug\net8.0\MealOrder.ServerData.pdb
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\obj\Debug\net8.0\MealOrder.ServerData.csproj.AssemblyReference.cache
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\obj\Debug\net8.0\MealOrder.ServerData.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\obj\Debug\net8.0\MealOrder.ServerData.AssemblyInfoInputs.cache
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\obj\Debug\net8.0\MealOrder.ServerData.AssemblyInfo.cs
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\obj\Debug\net8.0\MealOrder.ServerData.csproj.CoreCompileInputs.cache
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\obj\Debug\net8.0\MealOrder.ServerData.dll
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\obj\Debug\net8.0\refint\MealOrder.ServerData.dll
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\obj\Debug\net8.0\MealOrder.ServerData.pdb
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\obj\Debug\net8.0\MealOrder.ServerData.genruntimeconfig.cache
+C:\Users\imano\source\repos\MealOrder\MealOrder.ServerData\obj\Debug\net8.0\ref\MealOrder.ServerData.dll

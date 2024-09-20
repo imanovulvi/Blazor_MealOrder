@@ -1,0 +1,87 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = MealOrder.ClientAssembly
+build_property.RootNamespace = MealOrder.ClientAssembly
+build_property.ProjectDir = C:\Users\imano\source\repos\MealOrder\MealOrder.ClientAssembly\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\imano\source\repos\MealOrder\MealOrder.ClientAssembly
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Layout/EmptyLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEVtcHR5TGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/Order.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/OrderEditOrInsert.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3JkZXJFZGl0T3JJbnNlcnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/SupliersEditOrInsert.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwbGllcnNFZGl0T3JJbnNlcnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/Suppliers.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwcGxpZXJzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/TimerController.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGltZXJDb250cm9sbGVyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/User.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/UserEditOrInsert.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlckVkaXRPckluc2VydC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Pages/Weather.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-j7cas4srfj
+
+[C:/Users/imano/source/repos/MealOrder/MealOrder.ClientAssembly/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-g9jl1t2j64

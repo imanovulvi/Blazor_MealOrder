@@ -1,0 +1,11 @@
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\bin\Debug\net8.0\Meal.Shared.deps.json
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\bin\Debug\net8.0\Meal.Shared.dll
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\bin\Debug\net8.0\Meal.Shared.pdb
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\obj\Debug\net8.0\Meal.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\obj\Debug\net8.0\Meal.Shared.AssemblyInfoInputs.cache
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\obj\Debug\net8.0\Meal.Shared.AssemblyInfo.cs
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\obj\Debug\net8.0\Meal.Shared.csproj.CoreCompileInputs.cache
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\obj\Debug\net8.0\Meal.Shared.dll
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\obj\Debug\net8.0\refint\Meal.Shared.dll
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\obj\Debug\net8.0\Meal.Shared.pdb
+C:\Users\imano\source\repos\MealOrder\Meal.Shared\obj\Debug\net8.0\ref\Meal.Shared.dll

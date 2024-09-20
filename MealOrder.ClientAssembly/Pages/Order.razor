@@ -1,0 +1,59 @@
+﻿@page "/orders"
+<div>
+    <EditForm OnValidSubmit="GetOrderFilter" Model="orderFilter">
+     userId
+        <InputNumber @bind-Value="orderFilter.UserId"></InputNumber> 
+        MinDate
+        <InputDate @bind-Value="orderFilter.CreateDateMin"></InputDate>  
+        userId
+        <InputDate @bind-Value="orderFilter.CreateDateMax"></InputDate>
+
+        <button type="submit">Axtar</button>
+    </EditForm>
+</div>
+
+
+
+@if (orders.Value is not null)
+{
+    <button @onclick="()=>EditOrInsert(0)">Cretate</button>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Description</th>
+                <th scope="col">CreateDate</th>
+                <th scope="col">UserId</th>
+                <th scope="col">SupplierId</th>
+                <th scope="col">IsAktiv</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in orders.Value)
+            {
+                <tr>
+                    <th scope="row">1</th>
+                    <td>@item.Description</td>
+                    <td>@item.CreateDate</td>
+                    <td>@item.UserId</td>
+                    <td>@item.SupplierId</td>
+                    <td>@item.IsAktiv</td>
+                    @if (UserId==item.UserId)
+                    {
+                        <td><button @onclick="()=>EditOrInsert(item.Id)">Update</button></td>
+                        <td><button>Delete</button></td>
+                    }
+                  
+
+                 
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+
+}

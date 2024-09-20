@@ -1,0 +1,76 @@
+﻿@page "/useredit/{UserId:int}"
+@page "/insert"
+<EditForm Model="@userDTO" OnValidSubmit="@EditOrInsert">
+    <br />Name
+    <InputText @bind-Value="userDTO.Name" ></InputText>  
+    <br />Surname
+    <InputText @bind-Value="userDTO.Surname" ></InputText>  
+    <br />Email
+    <InputText @bind-Value="userDTO.Email" ></InputText> 
+    <br />Password
+    <InputText @bind-Value="userDTO.Password" ></InputText> 
+    <br />Aktiv
+    <InputCheckbox @bind-Value="userDTO.IsAktiv"></InputCheckbox>
+    <br />
+    <button type="submit">@(UserId==0?"Add":"Edit")</button>
+    <br />
+    <button @onclick="@BackPage">Cancel</button>
+
+</EditForm>
+<br />
+@Message
+@code {
+    [Inject]
+    public NavigationManager navigationManager
+    { get; set; }
+    [Inject]
+    public HttpClient client { get; set; }
+    public string Message { get; set; }
+
+
+    [Parameter]
+    public int UserId { get; set; }
+    UserDTO userDTO = new UserDTO();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (UserId != 0)
+        {
+            var user = await client.GetServiceAsync<UserDTO>("http://localhost:5005/api/User/GetById?id=" + UserId);
+            userDTO.Id = user.Value.Id;
+            userDTO.Name = user.Value.Name;
+            userDTO.Surname = user.Value.Surname;
+            userDTO.Email = user.Value.Email;
+            userDTO.Password = user.Value.Password;
+            userDTO.IsAktiv = user.Value.IsAktiv;
+        }
+    }
+
+    protected async Task EditOrInsert()
+    {
+        if(UserId==0)
+        {
+            var isResult= await client.PostServiceAsync<UserDTO>("http://localhost:5005/api/User/Create", userDTO);
+            if(isResult)
+                navigationManager.NavigateTo("/user");
+
+            Message = "Error oldu";
+        }
+        else
+        {
+           
+
+            var isResult = await client.PutServiceAsync<UserDTO>("http://localhost:5005/api/User/Update", userDTO);
+            if (isResult)
+                navigationManager.NavigateTo("/user");
+
+            Message = "Error oldu";
+        }
+    }
+
+    protected void BackPage()
+    {
+        navigationManager.NavigateTo("/user");
+    }
+
+}

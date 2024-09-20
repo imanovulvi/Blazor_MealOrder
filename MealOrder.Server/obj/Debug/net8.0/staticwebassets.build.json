@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "1CAuO07LWa+tJdXKcsqOdyr6masZqU+WY+QdZO5a4NA=",
+  "Source": "MealOrder.Server",
+  "BasePath": "_content/MealOrder.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

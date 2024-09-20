@@ -1,0 +1,25 @@
+﻿<img alt="@alt"  src="@src" @attributes=@Attributes />
+<button @onclick="listAtrb">List atrb</button>
+@Atributlar
+@code {
+    [Parameter]
+    public string src { get; set; }
+    [Parameter]
+    public string alt { get; set; }
+
+    public string Atributlar { get; set; }
+
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object> Attributes { get; set; }
+
+    public void listAtrb()
+    {
+        foreach (var item in Attributes)
+        {
+            Atributlar += item.Key + "=" + item.Value+"\n";
+        }
+    }
+
+   
+}

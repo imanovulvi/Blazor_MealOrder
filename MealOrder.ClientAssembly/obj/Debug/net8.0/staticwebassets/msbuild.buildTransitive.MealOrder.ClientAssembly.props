@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\MealOrder.ClientAssembly.props" />
+</Project>

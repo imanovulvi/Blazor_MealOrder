@@ -1,0 +1,39 @@
+﻿@page "/suppliers"
+@if (supplier.Value is not null)
+{
+    <button @onclick="()=>EdinOrInsert(-1)">Create</button>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">WebUrl</th>
+                <th scope="col">IsAktiv</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in supplier.Value)
+            {
+                <tr>
+                    <th scope="row">1</th>
+                    <td>@item.Name</td>
+                    <td>@item.WebUri</td>
+                    <td>@item.IsAktiv</td>
+ 
+                    <td><button @onclick="()=>EdinOrInsert(item.Id)">Update</button></td>
+                    <td><button @onclick="()=>Delete(item.Id)">Delete</button></td>
+                </tr>
+            }
+          
+
+        </tbody>
+    </table>
+
+}
+
+@code {
+
+ 
+}

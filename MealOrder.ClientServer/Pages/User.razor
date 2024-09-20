@@ -1,0 +1,109 @@
+﻿@page "/user"
+@using Meal.Shared.ResponseModel
+@inherits UserBase
+
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleCreateModal">Create Modal pop</button>
+<button @onclick='() => EditOrInsert($"/userinsert")'>Create</button>
+@if (users.Value is not null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Del</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in users.Value)
+            {
+                <tr>
+                    <th scope="row">1</th>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.Email</td>
+                    <td><button @onclick='() => EditOrInsert($"/useredit/"+item.Id)'>Update</button></td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Update
+                        </button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" @onclick="()=>
+EditPop(item.Id)" data-bs-target="#exampleCreateModal">
+                            Update Modal popat
+                        </button>
+                    </td>
+                    <td><button @onclick="()=>Delete(item.Id)">Del</button></td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+}
+<UserEditComponent user="@user" OnUserUpdated="loadUser" OnLoading="@LoadUsersAsync" LoadUsersAsync2="Callback"></UserEditComponent>
+
+
+
+@code
+{
+    public CustomEventCallback<ServiceResponse<List<UserDTO>>> Callback { get; set; }
+    public User()
+    {
+        Callback = new CustomEventCallback<ServiceResponse<List<UserDTO>>>(new CustomEnevtHandler<ServiceResponse<List<UserDTO>>>(loadUser));
+    }
+
+
+    [Inject]
+    public HttpClient client { get; set; }
+
+    UserDTO user = new UserDTO();
+    async Task EditPop(int id)
+    {
+        if (id > 0)
+        {
+            var resultUser = await client.GetServiceAsync<UserDTO>($"http://localhost:5005/api/User/GetById?id={id}");
+            if (resultUser.Success)
+            {
+                user.Id = id;
+                user.Name = resultUser.Value.Name;
+                user.Surname = resultUser.Value.Surname;
+                user.Email = resultUser.Value.Email;
+                user.Password = resultUser.Value.Password;
+                user.IsAktiv = resultUser.Value.IsAktiv;
+            }
+        }
+    }
+
+    public async Task LoadUsersAsync()
+    {
+
+
+
+        var result = await client.GetServiceAsync<List<UserDTO>>("http://localhost:5005/api/User/GetAll");
+
+        if (result.Success)
+        {
+            users = result;
+        }
+        else
+        {
+            Message = "melumat tapilmadi";
+         
+        }
+        InvokeAsync(StateHasChanged);
+
+    }
+
+
+    async Task loadUser(ServiceResponse<List<UserDTO>> c_users)
+    {
+        users = c_users;
+        user = new UserDTO(); 
+    }
+}

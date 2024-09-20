@@ -1,0 +1,38 @@
+﻿@page "/timer"
+@implements IDisposable
+@Count
+
+<button @onclick="Start">Start</button>
+<button @onclick="Stop">Stop</button>
+@code {
+    Timer timer;
+    public int Count { get; set; }
+    public TimerPage()
+    {
+        timer = new Timer(new TimerCallback(TimierCallBack));
+    }
+    void TimierCallBack(object obj)
+    {
+        InvokeAsync(() =>
+        {
+            Count++;
+            File.AppendAllText("Log.txt", Count.ToString());
+            StateHasChanged();
+        });
+
+
+    }
+    void Start()
+    {
+        timer.Change(0, 1000);
+    }
+    void Stop()
+    {
+        timer.Change(0, 0);
+    }
+    public void Dispose()
+    {
+        timer.Dispose();
+    }
+
+}

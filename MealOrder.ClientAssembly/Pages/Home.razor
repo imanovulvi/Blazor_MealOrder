@@ -1,0 +1,18 @@
+﻿@page "/home"
+
+@attribute [Authorize]
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+@code{
+    [Inject]
+    public AuthenticationStateProvider authenticationStateProvider { get; set; }
+
+    protected override async void OnInitialized()
+    {
+        var aaa = (await(authenticationStateProvider as CuntomAuthenticationState).GetAuthenticationStateAsync());
+    }
+  
+}

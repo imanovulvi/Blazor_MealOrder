@@ -1,0 +1,141 @@
+﻿@using Meal.Shared.ResponseModel
+<!-- Modal -->
+
+<div class="modal fade" id="exampleCreateModal"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <EditForm @OnValidSubmit="@EditOrInsert" Model="@user">
+                    <br />
+                    <label for="Name">Name</label>
+                    <InputText @bind-Value="user.Name" id="Name"></InputText>
+                    <br />
+                    <label for="Surname">Surname</label>
+                    <InputText @bind-Value="user.Surname" id="Surname"></InputText>
+                    <br />
+                    <label for="Email">Email</label>
+                    <InputText @bind-Value="user.Email" id="Email"></InputText>
+                    <br />
+                    <label for="Password">Password</label>
+                    <InputText @bind-Value="user.Password" id="Password" type="paswword"></InputText>
+                    <br />
+                    <label for="IsAktiv">IsAktiv</label>
+                    <InputCheckbox id="IsAktiv" @bind-Value="user.IsAktiv"></InputCheckbox>
+
+                </EditForm>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+                <button type="button" class="btn btn-primary btn_create" @onclick="EditOrInsert">@(user.Id == 0 ? "Add" : "Edit")</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Inject]
+    public HttpClient client { get; set; }
+    [Inject]
+    public NavigationManager navigationManager { get; set; }
+    [Inject]
+    public IJSRuntime JS { get; set; }
+
+    public string Message { get; set; }
+
+    [Parameter]
+    public UserDTO user { get; set; }
+
+    [Parameter]
+    public EventCallback<ServiceResponse<List<UserDTO>>> OnUserUpdated { get; set; }
+
+
+    protected ServiceResponse<List<UserDTO>> users = new ServiceResponse<List<UserDTO>>();
+
+
+    public async Task<ServiceResponse<List<UserDTO>>> LoadUsersAsync()
+    {
+
+
+
+        var result = await client.GetServiceAsync<List<UserDTO>>("http://localhost:5005/api/User/GetAll");
+
+        if (result.Success)
+        {
+            return result;
+        }
+        else
+        {
+            Message = "melumat tapilmadi";
+            return null;
+        }
+
+    }
+
+    public delegate Task MyAction(); 
+
+    [Parameter]
+    public MyAction OnLoading { get; set; }
+
+    [Parameter]
+    public CustomEventCallback<ServiceResponse<List<UserDTO>>> LoadUsersAsync2 { get; set; }
+
+    async  Task EditOrInsert()
+    {
+
+
+        if (user.Id == 0)
+        {
+            var result = await client.PostServiceAsync("http://localhost:5005/api/User/Create", user);
+            if (result)
+            {
+                //OnLoad 1
+                //await OnLoading.Invoke();
+
+                //OnLoad 2
+                // await OnUserUpdated.InvokeAsync(await LoadUsersAsync());
+
+                //Onload 3
+                LoadUsersAsync2.InvokeAsync(await LoadUsersAsync());
+                InvokeAsync(StateHasChanged);
+            }
+
+            else
+            {
+                Message = "Error";
+            }
+
+        }
+        else
+        {
+            var result = await client.PutServiceAsync("http://localhost:5005/api/User/Update", user);
+            if (result)
+            {
+                //OnLoad 1
+                await OnLoading.Invoke();
+
+                //OnLoad 2
+                // await OnUserUpdated.InvokeAsync(await LoadUsersAsync());
+
+                //Onload 3
+                LoadUsersAsync2.InvokeAsync(await LoadUsersAsync());
+                InvokeAsync(StateHasChanged);
+            }
+
+            else
+            {
+                Message = "Error";
+            }
+        }
+
+
+        await JS.InvokeVoidAsync("ModalHide", "#exampleCreateModal");
+    }
+
+
+
+
+}

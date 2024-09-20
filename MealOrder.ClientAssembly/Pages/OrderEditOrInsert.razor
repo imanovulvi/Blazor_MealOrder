@@ -1,0 +1,43 @@
+﻿@page "/ordereditinsert/{id:int}"
+
+
+<EditForm Model="order" OnValidSubmit="InserOrEdit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <br />
+    <label>Description</label>
+    <InputText @bind-Value="order.Description"></InputText>
+   <ValidationMessage For="()=>order.Description"></ValidationMessage>
+    <br />
+    <label>CreateDate</label>
+    
+    <InputDate @bind-Value="order.CreateDate"></InputDate>
+    <br />
+
+    <label>UserId</label>
+
+    <InputNumber @bind-Value="order.UserId"></InputNumber>
+
+    <br />
+    <label>Supplier</label>
+
+   <select @bind="order.SupplierId">
+       <option>select</option>
+        @foreach (var item in supplier)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+   </select>
+
+    <br />
+    <label>InputSupplier</label>
+
+    <InputSelect @bind-Value="order.SupplierId">
+        @foreach (var supplier in supplier)
+        {
+            <option value="@supplier.Id">@supplier.Name</option>
+        }
+</InputSelect>
+    <br />
+    <button type="submit">(@(Id==0?"Add":"Edit"))</button>
+</EditForm>
